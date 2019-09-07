@@ -17,5 +17,5 @@ Go to PushingBox, create a new account for free and login. Go to Dashboard and c
 
 ---->Give it a name, and paste your pushbullet token which you should have in your notepad text file and submit the form. After that go to My Scenarios and add a new scenario. You should now be able to add a new Action to your scenario.
 
----->The text between the $param$ signs will be your HTTP GET parameter, you will see in the code later. You will be able to replace each parameter like that with your data like temperature or humidity. Save the action and go back to your virtual scenarios list. You should be able to see your new scenario and copy the DeviceId.
+---->The text between the $param$ signs will be your HTTP GET parameter, you will see in the code later. You will be able to replace each parameter like that with your data. Save the action and go back to your virtual scenarios list. You should be able to see your new scenario and copy the DeviceId.
 
