@@ -1,10 +1,10 @@
 
 #include <ESP8266WiFi.h>
-String deviceId = "vBA55A702861E4A6";
+String deviceId = "xxxxxxxxxxxxxxxxxxxx";
 const char* logServer = "api.pushingbox.com";
 
-const char* ssid = "Canberra";
-const char* password = "pk313102";
+const char* ssid = "xxxxxxxxxxxxx";
+const char* password = "xxxxxxxxx";
 
 const int trigPin = D1;
 const int echoPin = D0;
@@ -68,7 +68,7 @@ Serial.print("Distance: ");
 Serial.println(distance);
 if(distance<=10)
 {
-  sendNotification(".................");
-  Serial.println("chal gya finally");
+  sendNotification("..........Done.......");
+  Serial.println("Working Sucessfully");
 }
 }
