@@ -8,7 +8,7 @@ float cm;
 
 void setup()
 {
-servoMain.attach(9); // servo on digital pin 10
+servoMain.attach(9); // servo on digital pin 9
 pinMode(trigpin, OUTPUT);
 pinMode(echopin, INPUT);
 }
@@ -16,7 +16,7 @@ pinMode(echopin, INPUT);
 void loop()
 { 
 digitalWrite(trigpin, LOW);
-delay(2); 
+delay(100); 
 digitalWrite(trigpin, HIGH);
 delayMicroseconds(10); 
 digitalWrite(trigpin, LOW); 
@@ -31,7 +31,7 @@ delay(3000);
 }
 else{
 servoMain.write(0);
-delay(50);
+delay(100);
 }
 
 }
