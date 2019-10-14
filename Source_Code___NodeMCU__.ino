@@ -1,27 +1,26 @@
-
 #include <ESP8266WiFi.h>
+
 String deviceId = "xxxxxxxxxxxxxxxxxxxx";
-const char* logServer = "api.pushingbox.com";
+const char* logServer = "api.pushingbox.com", ssid = "xxxxxxxxxxxxx", password = "xxxxxxxxx";
 
-const char* ssid = "xxxxxxxxxxxxx";
-const char* password = "xxxxxxxxx";
+const int trigPin = D1, echoPin = D0;
+long duration = 0;
+int distance = 0;
 
-const int trigPin = D1;
-const int echoPin = D0;
-long duration;
-int distance;
-
-void setup() {
-pinMode(trigPin, OUTPUT); 
-pinMode(echoPin, INPUT); 
-Serial.begin(115200); 
+void setup()
+{
+  pinMode(trigPin, OUTPUT); 
+  pinMode(echoPin, INPUT); 
+  Serial.begin(115200); 
 }
-void sendNotification(String message){
 
-  Serial.println("- connecting to Home Router SID: " + String(ssid));
+void sendNotification(String message)
+{
+  Serial.println("- connecting to Home Router SSID: " + String(ssid));
   
   WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(500);
     Serial.print(".");
   }
@@ -33,7 +32,8 @@ void sendNotification(String message){
   WiFiClient client;
 
   Serial.println("- connecting to pushing server: " + String(logServer));
-  if (client.connect(logServer, 80)) {
+  if(client.connect(logServer, 80))
+  {
     Serial.println("- succesfully connected");
     
     String postStr = "devid=";
@@ -56,19 +56,21 @@ void sendNotification(String message){
   client.stop();
   Serial.println("- stopping the client");
 }
-void loop() {
-digitalWrite(trigPin, LOW);
-delayMicroseconds(2);
-digitalWrite(trigPin, HIGH);
-delayMicroseconds(10);
-digitalWrite(trigPin, LOW);
-duration = pulseIn(echoPin, HIGH);
-distance= duration*0.034/2;
-Serial.print("Distance: ");
-Serial.println(distance);
-if(distance<=10)
+
+void loop()
 {
-  sendNotification("..........Done.......");
-  Serial.println("Working Sucessfully");
-}
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * (0.034 / 2);
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  if(distance < = 10)
+  {
+    sendNotification("..........Done.......");
+    Serial.println("Working Sucessfully");
+  }
 }
